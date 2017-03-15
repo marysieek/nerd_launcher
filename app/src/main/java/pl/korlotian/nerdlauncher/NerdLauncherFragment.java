@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -76,7 +77,9 @@ public class NerdLauncherFragment extends Fragment {
             mResolveInfo = resolveInfo;
             PackageManager pm = getActivity().getPackageManager();
             String appName = mResolveInfo.loadLabel(pm).toString();
+            Drawable icon = mResolveInfo.loadIcon(pm);
             mNameTextView.setText(appName);
+            mNameTextView.setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null);
         }
 
         @Override
